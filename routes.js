@@ -1,16 +1,16 @@
 const router = require('express').Router();
-const ejs = require('ejs');
+const pug = require('pug');
 // const csrf = require('csurf')
 // const csrfProtection = csrf({ cookie: true })
 
 router.get("/",  (req,res) => {
-  res.render("index");
+  let data = {page_title: 'Home'}
+  res.render('index', data)
 })
 
 router.get('/hi', (req,res) => {
   const msg = "Hello World!"
-  const html = ejs.render("<%= msg %>", {msg: msg})
-  res.send(html)
+  res.send(msg)
 })
 
 

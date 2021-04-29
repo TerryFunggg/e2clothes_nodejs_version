@@ -8,7 +8,7 @@ const webpackConfig = require('./webpack.config');
 
 const app = express();
 app.use(webpackMiddleware(webpack(webpackConfig)));
-app.set("view engine", 'ejs')
+app.set("view engine", 'pug')
 app.use(routes);
 
 app.listen(port, (error) => {
