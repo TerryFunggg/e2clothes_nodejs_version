@@ -1,0 +1,12 @@
+nav(data-controller="navbar")
+    div(class="py-4 px-2 flex flex-row justify-between items-center")
+        h1(class="text-2xl ml-2") e2clothes
+        i(class="fas fa-bars mr-4 sm:block md:hidden text-2xl cursor-pointer", data-action="click->navbar#toggle")
+        div(class="mr-2 hidden md:block")
+            a(class="login-btn") Login
+            a(class="signup-btn") SignUp
+    // responsive navbar
+    div(class="hidden md:hidden w-screen shadow" data-navbar-target="submenu")
+        a(class="nav-menu-item") Login
+        hr
+        a(class="nav-menu-item") SignUp

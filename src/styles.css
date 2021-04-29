@@ -1,3 +1,15 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+.signup-btn {
+    @apply m-2 py-2 px-4 text-base border-2 border-gray-200 rounded-md hover:border-white hover:bg-green-600 hover:text-white cursor-pointer transition ease-out duration-300
+}
+
+.login-btn {
+    @apply m-2 py-2 px-4 text-base cursor-pointer hover:text-green-600
+}
+
+.nav-menu-item {
+    @apply inline-block w-screen text-center p-2 hover:bg-green-700 hover:text-white cursor-pointer transition ease-in-out duration-200
+}
