@@ -5,7 +5,7 @@ e2clothes_web
 - stimulus js
 - tailwind css
 - express
-- ejs
+- pug
 
 ### Setup
 
