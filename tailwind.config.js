@@ -3,7 +3,7 @@ module.exports = {
   purge: [
     './src/*.html',
    './src/*.js',
-  './views/*.ejs',
+    'views/*.pug'
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
