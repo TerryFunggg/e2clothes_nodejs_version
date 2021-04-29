@@ -1,12 +1,6 @@
 {
   "plugins": [
-    "transform-class-properties",
-    [
-      "@babel/plugin-transform-react-jsx",
-      {
-        "pragma": "Reactless.createElement"
-      }
-    ]
+    "transform-class-properties"
   ],
   "comments": false
 }
