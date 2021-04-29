@@ -5,6 +5,7 @@ const routes = require('./routes')
 const webpack = require('webpack');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackConfig = require('./webpack.config');
+const reload = require('reload')
 
 const app = express();
 app.use(webpackMiddleware(webpack(webpackConfig)));
@@ -16,3 +17,5 @@ app.listen(port, (error) => {
   console.log(`Listening on port ${port}`);
 })
 
+
+reload(app)
