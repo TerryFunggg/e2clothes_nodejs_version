@@ -1,12 +1,20 @@
-nav(data-controller="navbar")
+nav(class="shadow" data-controller="navbar")
     div(class="py-4 px-2 flex flex-row justify-between items-center")
-        h1(class="text-2xl ml-2") e2clothes
+        div(class="flex")
+            h1(class="text-2xl ml-2") e2clothes
+            div(class="ml-10 self-center hidden md:block")
+                a(class="nav-item-btn active") Home
+                a(class="nav-item-btn") Market
         i(class="fas fa-bars mr-4 sm:block md:hidden text-2xl cursor-pointer", data-action="click->navbar#toggle")
         div(class="mr-2 hidden md:block")
             a(class="login-btn") Login
             a(class="signup-btn") SignUp
     // responsive navbar
-    div(class="hidden md:hidden w-screen shadow" data-navbar-target="submenu")
+    div(class="hidden md:hidden w-screen" data-navbar-target="submenu")
+        a(class="nav-menu-item") Home
+        hr
+        a(class="nav-menu-item") Market
+        hr
         a(class="nav-menu-item") Login
         hr
         a(class="nav-menu-item") SignUp
