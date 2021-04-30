@@ -1,0 +1,28 @@
+include ../components/header.pug
+div(class="flex justify-center h-screen w-full items-center" style="background-image:url('https://images.pexels.com/photos/994517/pexels-photo-994517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')")
+    form(class="form pt-2 pb-6 px-10 md:px-20 shadow-2xl bg-white rounded-lg" data-controller="loginForm" method="POST" action="/login")
+        div(class="my-6")
+            h1(class="inline text-2xl text-bold tracking-wider uppercase") Login
+            i(class="inline ml-2 text-xl fas fa-rocket")
+        div(class="my-4")
+            label(class="" for="email") Email:
+            input(id="email" name="email" type="email" data-loginForm-target="email" placeholder="Enter your email")
+        div(class="my-4")
+            label(class="" for="password") Password:
+            input(id="password" name="password" type="password" data-loginForm-target="password" placeholder="Enter your password")
+
+        if errors
+            div(class="error-box" data-loginForm-target="errBox")
+                each error in errors
+                    div(class="flex items-center")
+                        i(class="far fa-times-circle")
+                        p(class="ml-2") #{error}
+        if error
+            div(class="error-box" data-loginForm-target="errBox")
+                div(class="flex items-center")
+                    i(class="far fa-times-circle")
+                    p(class="ml-2") #{error}
+
+
+        div(class="mt-8 text-right")
+            button(class="submit-btn") Submit
