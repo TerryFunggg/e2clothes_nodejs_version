@@ -2,12 +2,13 @@ const fetch = require('isomorphic-fetch');
 
 const gqlServerURL = process.env.GRAPHQL_ENDPOINT
 
-async function gqlFetch(query) {
+async function gqlFetch(query, token = '') {
   try {
     const data = await fetch(gqlServerURL, {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `${token}`
       },
       body: JSON.stringify({ query })
     })
