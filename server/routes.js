@@ -5,10 +5,28 @@ const pug = require("pug");
 // const csrf = require('csurf')
 // const csrfProtection = csrf({ cookie: true })
 
-router.get("/",  (req,res) => {
-  let data = {page_title: 'Home'}
-  res.render('index', data)
-})
+router.get("/", async (req, res) => {
+  let domEl = { page_title: "Home" };
+  if(!req.cookies.token) return res.render("index", domEl);
+
+  let token = req.cookies.token
+  let data = await gqlFetch(`
+   {
+      me {
+        firstName
+        lastName
+        userName
+        role
+        avatar
+      }
+    }
+  `, token);
+
+  if(!!data?.data?.me ){
+    domEl.user = data.data.me;
+  }
+  res.render("index", domEl);
+});
 
 router.get("/login", (req, res) => {
   res.render("pages/login");
