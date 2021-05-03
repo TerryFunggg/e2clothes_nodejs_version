@@ -6,15 +6,36 @@ nav(class="shadow" data-controller="navbar")
                 a(class="nav-item-btn active") Home
                 a(class="nav-item-btn") Market
         i(class="fas fa-bars mr-4 sm:block md:hidden text-2xl cursor-pointer", data-action="click->navbar#toggle")
-        div(class="mr-2 hidden md:block")
-            a(class="login-btn") Login
-            a(class="signup-btn") SignUp
+        if user != null
+            // TODO: user drop down list
+            div(class="relative mr-2 hidden md:block")
+                - var avatar = user.avatar ? user.avatar : 'https://www.krocmemphis.org/wp-content/uploads/2016/10/generic-avatar.png'
+                img(class="h-10 w-10 rounded-full mr-5 cursor-pointer hover:ring-1" src=avatar data-action="click->navbar#toggleUserMenu")
+                ul(class="absolute right-5 top-12 bg-white border-2 z-20 w-40 text-center hidden" data-navbar-target="usermenu")
+                    li(class="py-2") Hi, #{user.userName}
+                    each item in user_menus
+                        li(class="py-2 cursor-pointer hover:bg-gray-200 px-4")
+                            a #{item}
+                    hr
+                    li(class="py-2 cursor-pointer hover:bg-gray-200 px-4" data-action="click->navbar#signout") Sign Out
+        else
+            div(class="mr-2 hidden md:block")
+                a(class="login-btn", href="/login") Login
+                a(class="signup-btn") SignUp
     // responsive navbar
     div(class="hidden md:hidden w-screen" data-navbar-target="submenu")
         a(class="nav-menu-item") Home
         hr
         a(class="nav-menu-item") Market
         hr
-        a(class="nav-menu-item") Login
-        hr
-        a(class="nav-menu-item") SignUp
+        if user != null
+            a(class="nav-menu-item") Hi, #{user.userName}
+            each item in user_menus
+                a(class="nav-menu-item") #{item}
+                hr
+            a(class="nav-menu-item") Sign Out
+
+        else
+            a(class="nav-menu-item") Login
+            hr
+            a(class="nav-menu-item" data-action="click->navbar#signout") SignUp
