@@ -23,7 +23,7 @@ nav(class="shadow" data-controller="navbar")
         else
             div(class="mr-2 hidden md:block")
                 a(class="login-btn", href="/login") Login
-                a(class="signup-btn") SignUp
+                a(class="signup-btn" href="/signup") SignUp
     // responsive navbar
     div(class="hidden md:hidden w-screen" data-navbar-target="submenu")
         a(class="nav-menu-item") Home
@@ -35,9 +35,9 @@ nav(class="shadow" data-controller="navbar")
             each item in user_menus
                 a(class="nav-menu-item") #{item}
                 hr
-            a(class="nav-menu-item") Sign Out
+            a(class="nav-menu-item" data-action="click->navbar#signout") Sign Out
 
         else
-            a(class="nav-menu-item") Login
+            a(class="nav-menu-item" href="/login") Login
             hr
-            a(class="nav-menu-item" data-action="click->navbar#signout") SignUp
+            a(class="nav-menu-item"  href="/signup") SignUp

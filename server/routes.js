@@ -12,5 +12,7 @@ const Account = require('./controllers/account_controller');
 router.get("/", Home.index)
 router.get("/login", Account.login)
 router.post("/login", Account.verifyLogin)
+router.get("/signup", Account.signup)
+router.post("/signup", Account.verifySignUp)
 
 module.exports = router;
