@@ -22,6 +22,18 @@
     @apply inline-block py-2 px-4 mx-2 rounded-lg cursor-pointer hover:bg-gray-200
 }
 
+.nav-user-avatar {
+    @apply h-10 w-10 rounded-full mr-5 cursor-pointer hover:ring-1
+}
+
+.nav-user-dropdown {
+    @apply absolute right-5 top-12 bg-white border-2 z-20 w-40 text-center rounded-xl shadow-xl
+}
+
+.nav-user-dropdown-item {
+    @apply py-2 cursor-pointer hover:bg-gray-200 px-4
+}
+
 .form input {
     @apply border-2 rounded-lg w-full h-10 px-4 py-2 text-xl outline-none focus:ring-1 focus:ring-green-600 focus:border-green-600
 }

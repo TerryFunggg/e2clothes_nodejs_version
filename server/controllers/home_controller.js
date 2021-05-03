@@ -2,6 +2,7 @@ const gqlFetch = require("../myGrapgQLFetch");
 
 exports.index = async (req, res) => {
   let domEl = {
+    home:true,
     page_title: "Home",
     user_menus: ["Your Profile", "Your Order"]
   };

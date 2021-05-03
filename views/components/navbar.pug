@@ -3,21 +3,23 @@ nav(class="shadow" data-controller="navbar")
         div(class="flex")
             h1(class="text-2xl ml-2") e2clothes
             div(class="ml-10 self-center hidden md:block")
-                a(class="nav-item-btn active") Home
-                a(class="nav-item-btn") Market
+                - var active = "nav-item-btn active"
+                a(class=home ? active : "nav-item-btn") Home
+                a(class=market ? active : "nav-item-btn") Market
         i(class="fas fa-bars mr-4 sm:block md:hidden text-2xl cursor-pointer", data-action="click->navbar#toggle")
         if user != null
             // TODO: user drop down list
             div(class="relative mr-2 hidden md:block")
                 - var avatar = user.avatar ? user.avatar : 'https://www.krocmemphis.org/wp-content/uploads/2016/10/generic-avatar.png'
-                img(class="h-10 w-10 rounded-full mr-5 cursor-pointer hover:ring-1" src=avatar data-action="click->navbar#toggleUserMenu")
-                ul(class="absolute right-5 top-12 bg-white border-2 z-20 w-40 text-center hidden" data-navbar-target="usermenu")
+                img(class="nav-user-avatar" src=avatar data-action="click->navbar#toggleUserMenu")
+                // user dropdown menu
+                ul(class="nav-user-dropdown hidden" data-navbar-target="usermenu")
                     li(class="py-2") Hi, #{user.userName}
                     each item in user_menus
-                        li(class="py-2 cursor-pointer hover:bg-gray-200 px-4")
+                        li(class="nav-user-dropdown-item")
                             a #{item}
                     hr
-                    li(class="py-2 cursor-pointer hover:bg-gray-200 px-4" data-action="click->navbar#signout") Sign Out
+                    li(class="nav-user-dropdown-item" data-action="click->navbar#signout") Sign Out
         else
             div(class="mr-2 hidden md:block")
                 a(class="login-btn", href="/login") Login
