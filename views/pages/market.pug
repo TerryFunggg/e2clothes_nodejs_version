@@ -1,0 +1,82 @@
+extends ../layouts/main.pug
+
+block content
+    div(class="grid grid-cols-6 gap-4")
+        div(class="col-span-6 my-10")
+            div(class="flex justify-center items-center")
+                // TODO: Search suggest list
+                div(class="flex border-2 border-gary-300 rounded-xl w-full mx-2 md:mx-40 shadow-xl text-2xl")
+                    // Search box
+                    input(class="border-transparent rounded-xl w-full h-full focus:outline-none p-4" type="text")
+                    i(class="text-center self-center mx-4 cursor-pointer fas fa-search")
+
+        // check selection
+        div(class="col-span-1 w-full hidden md:block")
+            div(class="flex justify-center items-center")
+                ul(class="py-4 px-8 rounded-xl shadow")
+                    div(class="py-2 px-4 w-full")
+                        li(class="mx-2 inline text-left") abc
+                        input(class="inline text-right border-0" type="checkbox")
+                    div(class="py-2 px-4")
+                        li(class="mx-2 inline") bdf
+                        input(class="inline" type="checkbox")
+                    div(class="py-2 px-4")
+                        li(class="mx-2 inline") sdds
+                        input(class="inline" type="checkbox")
+        // product card
+        div(class="col-span-5 w-screen md:w-full mx-auto")
+            div(class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-10")
+                // Card
+                div(class="ring-1 ring-gray-200 shadow-lg rounded p-4")
+                    div(class="relative")
+                        img(class="w-full block rounded" src="https://upload.wikimedia.org/wikipedia/en/f/f1/Tycho_-_Epoch.jpg")
+                    div(class="p-5")
+                        h3(class="text-lg") clothes
+                        p(class="text-gray-400 mt-2 text-right") $20
+
+                div(class="ring-1 ring-gray-200 shadow-lg rounded p-4")
+                    div(class="relative")
+                        img(class="w-full block rounded" src="https://upload.wikimedia.org/wikipedia/en/f/f1/Tycho_-_Epoch.jpg")
+                    div(class="p-5")
+                        h3(class="text-lg") clothes
+                        p(class="text-gray-400 mt-2 text-right") $20
+
+
+                div(class="ring-1 ring-gray-200 shadow-lg rounded p-4")
+                    div(class="relative")
+                        img(class="w-full block rounded" src="https://upload.wikimedia.org/wikipedia/en/f/f1/Tycho_-_Epoch.jpg")
+                    div(class="p-5")
+                        h3(class="text-lg") clothes
+                        p(class="text-gray-400 mt-2 text-right") $20
+
+                div(class="ring-1 ring-gray-200 shadow-lg rounded p-4")
+                    div(class="relative")
+                        img(class="w-full block rounded" src="https://upload.wikimedia.org/wikipedia/en/f/f1/Tycho_-_Epoch.jpg")
+                    div(class="p-5")
+                        h3(class="text-lg") clothes
+                        p(class="text-gray-400 mt-2 text-right") $20
+
+                div(class="ring-1 ring-gray-200 shadow-lg rounded p-4")
+                    div(class="relative")
+                        img(class="w-full block rounded" src="https://upload.wikimedia.org/wikipedia/en/f/f1/Tycho_-_Epoch.jpg")
+                    div(class="p-5")
+                        h3(class="text-lg") clothes
+                        p(class="text-gray-400 mt-2 text-right") $20
+
+                div(class="ring-1 ring-gray-200 shadow-lg rounded p-4")
+                    div(class="relative")
+                        img(class="w-full block rounded" src="https://upload.wikimedia.org/wikipedia/en/f/f1/Tycho_-_Epoch.jpg")
+                    div(class="p-5")
+                        h3(class="text-lg") clothes
+                        p(class="text-gray-400 mt-2 text-right") $20
+
+    div(class="flex my-4 justify-center")
+        if have_prev
+            button(class="market-page-btn")
+                i(class="fas fa-chevron-left")
+                span(class="ml-2") Prev.
+
+        if have_next
+            button(class="market-page-btn")
+                span(class="mr-2") Next
+                i(class="fas fa-chevron-right")

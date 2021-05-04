@@ -4,8 +4,8 @@ nav(class="shadow" data-controller="navbar")
             h1(class="text-2xl ml-2") e2clothes
             div(class="ml-10 self-center hidden md:block")
                 - var active = "nav-item-btn active"
-                a(class=home ? active : "nav-item-btn") Home
-                a(class=market ? active : "nav-item-btn") Market
+                a(class=home ? active : "nav-item-btn" href="/") Home
+                a(class=market ? active : "nav-item-btn" href="/market") Market
         i(class="fas fa-bars mr-4 sm:block md:hidden text-2xl cursor-pointer", data-action="click->navbar#toggle")
         if user != null
             // TODO: user drop down list
@@ -26,9 +26,9 @@ nav(class="shadow" data-controller="navbar")
                 a(class="signup-btn" href="/signup") SignUp
     // responsive navbar
     div(class="hidden md:hidden w-screen" data-navbar-target="submenu")
-        a(class="nav-menu-item") Home
+        a(class="nav-menu-item" href="/") Home
         hr
-        a(class="nav-menu-item") Market
+        a(class="nav-menu-item" href="/market") Market
         hr
         if user != null
             a(class="nav-menu-item") Hi, #{user.userName}
