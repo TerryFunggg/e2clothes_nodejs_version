@@ -1,6 +1,12 @@
 {
   "plugins": [
-    "transform-class-properties"
+    "transform-class-properties",
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "regenerator": true
+      }
+    ]
   ],
   "comments": false
 }
