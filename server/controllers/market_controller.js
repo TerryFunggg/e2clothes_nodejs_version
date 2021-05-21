@@ -8,7 +8,7 @@ exports.index = async (req, res) => {
     user_menus: ["Your Profile", "Your Order"]
   };
 
-  if (!req.cookies.token) return res.render("pages/market", domEl);
+  if (!req.cookies.token) return res.render("pages/login");
 
   let token = req.cookies.token
   let data = await gqlFetch(`
