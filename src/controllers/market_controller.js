@@ -22,7 +22,7 @@ export default class extends Controller {
 
       const products = await this._fetchPorducts(this._query(keyWords));
       let html = '';
-      products.data.product.map(p => {
+      products.data.search.map(p => {
         html += this._productCartd(p)
       })
       this.productListTarget.innerHTML = html
