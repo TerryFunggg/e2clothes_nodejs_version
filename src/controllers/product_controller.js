@@ -25,6 +25,7 @@ export default class extends Controller {
     // add loading anim
     if(result.data.addToCart.message === "ok"){
       alert("add to cart")
+      location.reload();
     }
 
     loader.close();

@@ -19,6 +19,7 @@ exports.index = async (req, res) => {
         userName
         role
         avatar
+        numOfCart
       }
     }
   `, token);

@@ -20,6 +20,7 @@ exports.index = async (req, res) => {
         userName
         role
         avatar
+        numOfCart
       }
      product(id: "${productId}") {
       id
