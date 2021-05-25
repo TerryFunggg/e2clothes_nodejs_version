@@ -7,6 +7,7 @@ const pug = require("pug");
 const Home = require('./controllers/home_controller')
 const Account = require('./controllers/account_controller');
 const Market = require('./controllers/market_controller');
+const Product = require('./controllers/products_controller');
 
 
 // Route section
@@ -16,5 +17,6 @@ router.post("/login", Account.verifyLogin)
 router.get("/signup", Account.signup)
 router.post("/signup", Account.verifySignUp)
 router.get("/market", Market.index)
+router.get("/product/:productId", Product.index)
 
 module.exports = router;
