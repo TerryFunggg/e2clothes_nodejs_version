@@ -13,9 +13,10 @@ nav(class="shadow" data-controller="navbar")
                 - var avatar = user.avatar ? user.avatar : 'https://www.krocmemphis.org/wp-content/uploads/2016/10/generic-avatar.png'
                 div(class="flex")
                     div(class="mr-6 cursor-pointer")
-                        i(class="relative fas fa-shopping-cart self-center border p-2 rounded-full hover:border-2 mt-1")
-                            if user.numOfCart != null && user.numOfCart > 0
-                                span(class="absolute -right-1.5 -bottom-2 bg-red-400 text-white rounded-full text-xs p-1") #{user.numOfCart}
+                        a(href="/cart")
+                            i(class="relative fas fa-shopping-cart self-center border p-2 rounded-full hover:border-2 mt-1")
+                                if user.numOfCart != null && user.numOfCart > 0
+                                    span(class="absolute -right-1.5 -bottom-2 bg-red-400 text-white rounded-full text-xs p-1") #{user.numOfCart}
                     img(class="nav-user-avatar" src=avatar data-action="click->navbar#toggleUserMenu")
                 // user dropdown menu
                 ul(class="nav-user-dropdown hidden" data-navbar-target="usermenu")
