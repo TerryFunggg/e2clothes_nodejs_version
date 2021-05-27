@@ -9,6 +9,7 @@ const Account = require('./controllers/account_controller');
 const Market = require('./controllers/market_controller');
 const Product = require('./controllers/products_controller');
 const Cart = require('./controllers/cart_controller');
+const Order = require('./controllers/order_controller');
 
 
 // Route section
@@ -23,5 +24,7 @@ router.post("/update_address", Account.updateUserAddress)
 router.get("/market", Market.index)
 router.get("/product/:productId", Product.index)
 router.get("/cart/", Cart.index)
+router.get("/orders/", Order.index)
+router.get("/order/:orderId", Order.orderDetail)
 
 module.exports = router;

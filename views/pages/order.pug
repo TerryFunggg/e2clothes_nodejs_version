@@ -1,0 +1,42 @@
+extends ../layouts/main.pug
+
+block content
+    div()
+        div(class="flex justify-center mt-10 shadow-xl rounded py-4 mx-20" )
+            div(class="")
+                table(class="table-auto")
+                    tr
+                        th(class="mx-2") id
+                        th code
+                        th date
+                        th state
+                        th
+                    each order in orders
+                        tr(class="my-4")
+                            //td=product.images[0]
+                            // TODO: Show product images
+                            td=order.id
+                            td=order.code
+                            td=order.createdAt
+                            case order.state
+                                when "processing"
+                                    td
+                                        p(class="text-blue-400 uppercase") #{order.state}
+                                when "complete"
+                                    td
+                                        p(class="text-green-400 uppercase") #{order.state}
+
+                                when "canceled"
+                                    td
+                                        p(class="text-gray-600 uppercase") #{order.state}
+                                when "failed"
+                                    td
+                                        p(class="text-red-400 uppercase") #{order.state}
+
+                                default
+                                    td
+                            //input(class="w-20 border px-2" type="number" value=product.quality min="0" max=product.quality)
+                            td
+                                div(class="cursor-pointer"  data-action="click->cart#deleteItem")
+                                    - var url = "/order/" + order.id
+                                    a(class="px-1 py-2 bg-green-600 rounded text-white hover:bg-green-500" href=url data-item=order.id) Details

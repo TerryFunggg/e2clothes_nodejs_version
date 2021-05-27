@@ -23,6 +23,8 @@ nav(class="shadow" data-controller="navbar")
                     li(class="py-2") Hi, #{user.userName}
                     li(class="nav-user-dropdown-item")
                         a(href="/user_info") Your Profile
+                    li(class="nav-user-dropdown-item")
+                        a(href="/orders") Your Order
                     each item in user_menus
                         li(class="nav-user-dropdown-item")
                             a #{item}
@@ -41,6 +43,7 @@ nav(class="shadow" data-controller="navbar")
         if user != null
             a(class="nav-menu-item") Hi, #{user.userName}
             a(class="nav-menu-item" href="/cart") Your Cart
+            a(class="nav-menu-item" href="/orders") Your Order
             a(class="nav-menu-item" href="/user_info") Your Profile
             each item in user_menus
                 a(class="nav-menu-item") #{item}

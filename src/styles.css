@@ -92,5 +92,8 @@ th {
 }
 
 th,td {
-  padding: 10px 20px
+  padding: 10px 20px;
+}
+tr {
+  margin: 30px 0px;
 }

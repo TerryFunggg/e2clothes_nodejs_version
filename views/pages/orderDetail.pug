@@ -1,0 +1,47 @@
+extends ../layouts/main.pug
+
+block content
+    div()
+        div(class="grid grid-cols-1 md:grid-cols-2 gap-4")
+            div(class="px-10 py-4 m-2 mt-4 shadow-lg rounded")
+                div(class="p-2")
+                    h2(class="text-xl font-blod") Order By
+                    p(class="my-2") Name:  #{order.name}
+                    p(class="my-2") Email #{order.email}
+                    p(class="my-2") Phone: #{order.phone}
+            div(class="px-10 py-4 m-2 shadow-lg rounded")
+                h2(class="text-xl font-blod") Address
+                div(class="p-2")
+                    case order.city
+                        when "nt"
+                            p(class="my-2")  New Territories
+                        when "hki"
+                            p(class="my-2") Hong Kong Island
+                        when "kl"
+                            p(class="my-2") Kowloon
+                        when "ot"
+                            p(class="my-2") Other
+                    p(class="my-2") #{order.streetAddress}
+                    p(class="my-2") #{order.buildingAddress}
+                    p(class="my-2") #{order.zipCode}
+            // Product list
+            div(class="md:col-span-2 shadow-xl mx-4 h-full py-4")
+                div(class="flex justify-center" )
+                    table
+                        tr
+                            th(class="mx-4") image
+                            th name
+                            th quality
+                            th price
+                        each product in products
+                            tr
+                                //td=product.images[0]
+                                // TODO: Show product images
+                                td
+                                    img(class="w-32 h-32" src="https://upload.wikimedia.org/wikipedia/en/f/f1/Tycho_-_Epoch.jpg")
+                                td=product.name
+                                td=product.quality
+                                td="$" + product.price
+                div(class="text-right mx-6 my-4 text-xl font-blod tracking-wider")
+                    span Total: $
+                    span(class="ml-2 underline") #{totalPrice}
