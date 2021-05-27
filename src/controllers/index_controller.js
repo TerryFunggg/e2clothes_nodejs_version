@@ -7,6 +7,5 @@ export default class extends Controller {
   }
 
   connect(){
-    console.log(this.element);
   }
 }

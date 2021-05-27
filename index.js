@@ -13,6 +13,7 @@ const reload = require('reload')
 const app = express();
 app.use(webpackMiddleware(webpack(webpackConfig)));
 app.use(cookieParser())
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", 'pug')
 app.use(routes);
