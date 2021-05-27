@@ -1,10 +1,15 @@
 import { Controller } from 'stimulus'
+import loader from '../loader';
 
 export default class extends Controller {
   static targets = ["searchForm", "productList"]
 
   initialize() {
     this.timer = null
+    this.keyWords = null
+    this.currentPage = 1
+    this.limit = 6
+    this.totalPage = 0;
   }
 
   connect() {
@@ -16,27 +21,59 @@ export default class extends Controller {
     const keyWords = event.target.value
     if (this.timer) clearTimeout(this.timer)
     if (!!!keyWords) return;
-
-    // set timer to prevent search over
-    this.timer = setTimeout( async () => {
-
-      const products = await this._fetchPorducts(this._query(keyWords));
-      let html = '';
-      products.data.search.map(p => {
-        html += this._productCartd(p)
-      })
-      this.productListTarget.innerHTML = html
-    }, 1500)
+    this.keyWords = keyWords
+    this.searchItems(keyWords);
   }
 
-  _query(q) {
+  async searchItems(keyWords) {
+    try {
+      loader.open();
+      // set timer to prevent search over
+      this.timer = setTimeout(async () => {
+        const data = await this._fetchPorducts(this._query(keyWords, this.currentPage, this.limit));
+        let html = '';
+        data.data.search.products.map(p => {
+          html += this._productCartd(p)
+        })
+        this.productListTarget.innerHTML = html
+        // TODO: refector this code
+        if (data?.data?.search?.total) {
+          this.totalPage = data.data.search.total;
+          //const result = Math.floor(this.totalPage / this.limit) + 1
+        }
+        loader.close();
+      }, 1500)
+    } catch (e) {
+      loader.close();
+      console.log(e);
+    }
+  }
+
+  prev(e) {
+    if (this.timer) clearTimeout(this.timer)
+    this.currentPage--;
+    this.searchItems(this.keyWords);
+  }
+
+  next(e) {
+    if (this.timer) clearTimeout(this.timer)
+    this.currentPage++;
+    this.searchItems(this.keyWords);
+  }
+
+  _query(q, page, limit) {
     return `
     {
-        search(search: "${q}"){
+        search(search: "${q}"${page ? ",page: " + page : ''}${limit ? ",limit: " + limit : ''}){
+          products{
             id
             name
             price
-        }
+          }
+        page,
+        per,
+        total
+        },
     }`
   }
 
@@ -72,7 +109,7 @@ export default class extends Controller {
             <img class="w-full block rounded" src="https://upload.wikimedia.org/wikipedia/en/f/f1/Tycho_-_Epoch.jpg"/>
             <div class="p-5">
                 <h3 class="text-lg">${product.name}</h3>
-                <p class="text-gray-400 mt-2 text-right">${product.price}</p>
+                <p class="text-gray-400 mt-2 text-right">\$${product.price}</p>
             </div>
         </div>
     </div></a>`;
