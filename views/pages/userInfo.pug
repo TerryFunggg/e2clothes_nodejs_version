@@ -39,27 +39,51 @@ block content
                     button(class="submit-btn") Submit
             //address form
             form(id="form-address" class="form pt-2 pb-6 px-10 md:px-20 shadow-2xl bg-white rounded-lg" method="POST" action="/update_address")
-                div(class="md:grid md:grid-cols-2 gap-2")
-                    div(class="my-2")
-                        label(class="" for="city") Area:
-                        select(id="city" class="w-8 md:w-40 px-4 py-2" name="city" type="text" data-loginForm-target="city" value="nt" required)
-                            option(value="nt" selected="nt" === user.address.city) New Territories
-                            option(value="hki" selected="hki" === user.address.city) Hong Kong Island
-                            option(value="kl" selected="kl" === user.address.city) Kowloon
-                            option(value="ot" selected="ot" === user.address.city) Other
+                - var address = user.address ? user.address : null
+                if address
+                    div(class="md:grid md:grid-cols-2 gap-2")
+                        div(class="my-2")
+                            label(class="" for="city") Area:
+                            select(id="city" class="w-8 md:w-40 px-4 py-2" name="city" type="text" data-loginForm-target="city" value="nt" required)
+                                option(value="nt" selected="nt" === user.address.city) New Territories
+                                option(value="hki" selected="hki" === user.address.city) Hong Kong Island
+                                option(value="kl" selected="kl" === user.address.city) Kowloon
+                                option(value="ot" selected="ot" === user.address.city) Other
 
 
-                    div(class="my-2")
-                        label(class="" for="zipCode") ZipCode:
-                        input(id="zipCode" name="zipCode" type="text" data-loginForm-target="zipCode" value=user.address.zipCode required)
+                        div(class="my-2")
+                            label(class="" for="zipCode") ZipCode:
+                            input(id="zipCode" name="zipCode" type="text" data-loginForm-target="zipCode" value=user.address.zipCode required)
 
-                    div(class="my-2 col-span-2")
-                        label(class="" for="streetAddress") Street Address
-                        input(id="streetAddress" name="streetAddress" type="text" data-loginForm-target="streetAddress" value=user.address.streetAddress required)
+                        div(class="my-2 col-span-2")
+                            label(class="" for="streetAddress") Street Address
+                            input(id="streetAddress" name="streetAddress" type="text" data-loginForm-target="streetAddress" value=user.address.streetAddress required)
 
-                    div(class="my-2 col-span-2")
-                        label(class="" for="buildAddress") Building Address:
-                        input(id="buildingAddress" name="buildingAddress" type="text" data-loginForm-target="buildingAddress" value=user.address.buildingAddress required)
+                        div(class="my-2 col-span-2")
+                            label(class="" for="buildAddress") Building Address:
+                            input(id="buildingAddress" name="buildingAddress" type="text" data-loginForm-target="buildingAddress" value=user.address.buildingAddress required)
+                else
+                    div(class="md:grid md:grid-cols-2 gap-2")
+                        div(class="my-2")
+                            label(class="" for="city") Area:
+                            select(id="city" class="w-8 md:w-40 px-4 py-2" name="city" type="text" data-loginForm-target="city" value="nt" required)
+                                option(value="nt") New Territories
+                                option(value="hki") Hong Kong Island
+                                option(value="kl") Kowloon
+                                option(value="ot") Other
+
+
+                        div(class="my-2")
+                            label(class="" for="zipCode") ZipCode:
+                            input(id="zipCode" name="zipCode" type="text" data-loginForm-target="zipCode" required)
+
+                        div(class="my-2 col-span-2")
+                            label(class="" for="streetAddress") Street Address
+                            input(id="streetAddress" name="streetAddress" type="text" data-loginForm-target="streetAddress" required)
+
+                        div(class="my-2 col-span-2")
+                            label(class="" for="buildAddress") Building Address:
+                            input(id="buildingAddress" name="buildingAddress" type="text" data-loginForm-target="buildingAddress" required)
 
 
                 div(class="mt-8 col-span-2 text-right")
