@@ -21,6 +21,8 @@ nav(class="shadow" data-controller="navbar")
                 // user dropdown menu
                 ul(class="nav-user-dropdown hidden" data-navbar-target="usermenu")
                     li(class="py-2") Hi, #{user.userName}
+                    li(class="nav-user-dropdown-item")
+                        a(href="/user_info") Your Profile
                     each item in user_menus
                         li(class="nav-user-dropdown-item")
                             a #{item}
@@ -38,6 +40,8 @@ nav(class="shadow" data-controller="navbar")
         hr
         if user != null
             a(class="nav-menu-item") Hi, #{user.userName}
+            a(class="nav-menu-item" href="/cart") Your Cart
+            a(class="nav-menu-item" href="/user_info") Your Profile
             each item in user_menus
                 a(class="nav-menu-item") #{item}
                 hr
