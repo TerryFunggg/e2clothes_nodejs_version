@@ -5,7 +5,7 @@ exports.index = async (req, res) => {
   let domEl = {
     home:true,
     page_title: "Product",
-    user_menus: ["Your Profile", "Your Order"]
+    user_menus: []
   };
 
 
@@ -32,7 +32,7 @@ exports.index = async (req, res) => {
     }
   `, token);
 
-  console.log(data);
+
 
   if (!!data?.data?.me) {
     domEl.user = data.data.me;

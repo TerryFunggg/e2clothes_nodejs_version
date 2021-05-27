@@ -82,7 +82,7 @@ exports.userInfo = async (req, res) => {
   let domEl = {
     home:true,
     page_title: "Home",
-    user_menus: ["Your Profile", "Your Order"]
+    user_menus: []
   };
   if (!req.cookies.token) return res.render("index", domEl);
 
@@ -124,7 +124,7 @@ exports.updateUserInfo = async (req, res) => {
   let domEl = {
     home:true,
     page_title: "Info",
-    user_menus: ["Your Profile", "Your Order"]
+    user_menus: []
   };
   if (!req.cookies.token) return res.render("index", domEl);
 
@@ -178,7 +178,7 @@ exports.updateUserAddress = async (req, res) => {
   let domEl = {
     home:true,
     page_title: "Info",
-    user_menus: ["Your Profile", "Your Order"]
+    user_menus: []
   };
   if (!req.cookies.token) return res.render("index", domEl);
 

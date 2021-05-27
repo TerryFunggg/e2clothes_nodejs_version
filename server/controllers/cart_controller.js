@@ -4,7 +4,7 @@ exports.index = async (req, res) => {
   let domEl = {
     home:true,
     page_title: "Cart",
-    user_menus: ["Your Profile", "Your Order"]
+    user_menus: []
   };
 
   if (!req.cookies.token) return res.render("index", domEl);

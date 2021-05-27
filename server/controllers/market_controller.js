@@ -5,7 +5,7 @@ exports.index = async (req, res) => {
   let domEl = {
     market:true,
     page_title: "Market",
-    user_menus: ["Your Profile", "Your Order"]
+    user_menus: []
   };
 
   if (!req.cookies.token) return res.render("pages/login");
