@@ -1,0 +1,66 @@
+extends ../layouts/main.pug
+
+block content
+    div(class="flex flex-col justify-start p-10" data-controller="userinfo")
+        div(class="flex")
+            button(data-action="userinfo#showUser" class="px-6 py-4 shadow rounded-t-lg hover:bg-gray-200") User
+            button(data-action="userinfo#showAddress" class="px-6 py-4 shadow rounded-t-lg hover:bg-gray-200") Address
+        div(class="")
+            // user form
+            form(id="form-user" class="form pt-2 pb-6 px-10 md:px-20 shadow-2xl bg-white rounded-lg" method="POST" action="/user_info")
+                div(class="md:grid md:grid-cols-2 gap-2")
+                    div(class="my-2")
+                        label(class="" for="firstName") First Name:
+                        input(id="firstName" name="firstName" type="text" data-loginForm-target="firstName" placeholder="Enter your first name" value=user.firstName required)
+
+                    div(class="my-2")
+                        label(class="" for="lastName") Last Name:
+                        input(id="lastName" name="lastName" type="text" data-loginForm-target="lastName" placeholder="Enter your last name" value=user.lastName required)
+
+                    div(class="my-2 col-span-2")
+                        label(class="" for="userName") User Name:
+                        input(id="userName" name="userName" type="text" data-loginForm-target="userName" placeholder="Enter your user name" value=user.userName required)
+
+                    div(class="my-2")
+                        label(class="" for="email") Email:
+                        input(id="email" name="email" type="email" data-loginForm-target="email" placeholder="Enter your email" value=user.email required)
+
+                    div(class="my-2")
+                        label(class="" for="phone") Phone:
+                        input(id="phone" name="phone" type="text" data-loginForm-target="phone" placeholder="Enter your phone" value=user.phone required)
+
+                if msg
+                    div(class="msg-box col-span-2")
+                        div(class="flex items-center")
+                            i(class="far fa-check-circle")
+                            p(class="ml-2") #{msg}
+
+                div(class="mt-8 col-span-2 text-right")
+                    button(class="submit-btn") Submit
+            //address form
+            form(id="form-address" class="form pt-2 pb-6 px-10 md:px-20 shadow-2xl bg-white rounded-lg" method="POST" action="/update_address")
+                div(class="md:grid md:grid-cols-2 gap-2")
+                    div(class="my-2")
+                        label(class="" for="city") Area:
+                        select(id="city" class="w-8 md:w-40 px-4 py-2" name="city" type="text" data-loginForm-target="city" value="nt" required)
+                            option(value="nt" selected="nt" === user.address.city) New Territories
+                            option(value="hki" selected="hki" === user.address.city) Hong Kong Island
+                            option(value="kl" selected="kl" === user.address.city) Kowloon
+                            option(value="ot" selected="ot" === user.address.city) Other
+
+
+                    div(class="my-2")
+                        label(class="" for="zipCode") ZipCode:
+                        input(id="zipCode" name="zipCode" type="text" data-loginForm-target="zipCode" value=user.address.zipCode required)
+
+                    div(class="my-2 col-span-2")
+                        label(class="" for="streetAddress") Street Address
+                        input(id="streetAddress" name="streetAddress" type="text" data-loginForm-target="streetAddress" value=user.address.streetAddress required)
+
+                    div(class="my-2 col-span-2")
+                        label(class="" for="buildAddress") Building Address:
+                        input(id="buildingAddress" name="buildingAddress" type="text" data-loginForm-target="buildingAddress" value=user.address.buildingAddress required)
+
+
+                div(class="mt-8 col-span-2 text-right")
+                    button(class="submit-btn") Submit
