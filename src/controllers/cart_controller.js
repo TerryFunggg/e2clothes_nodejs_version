@@ -20,7 +20,7 @@ export default class extends Controller {
 
     loader.open();
     //checkout
-    const result = await this._fetch(this._query());
+    const result = await this._fetch(this._checkoutQuery());
     loader.close();
     if(result.data.checkOut.message == 'ok'){
       alert('Order Created')
@@ -33,11 +33,33 @@ export default class extends Controller {
     }
   }
 
+  async deleteItem(e) {
+    if (confirm("Are you sure?")) {
+      //remove item from cart
+      const product = e.target.dataset.item;
+      const result = await this._fetch(this._deleteItemQuery(product));
+      if (result.data.removeFromCart.message === "ok") {
+        location.reload();
+      }
+    }
+  }
+
 
   /*
    * A query stirng send to graphql server
    */
-  _query() {
+  _deleteItemQuery(q) {
+    return `
+    mutation {
+        removeFromCart(input:{
+            productId: ${q}
+        }){
+            message
+        }
+    }`
+  }
+
+  _checkoutQuery() {
     return `
     mutation {
         checkOut(input:{
