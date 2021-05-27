@@ -26,14 +26,13 @@ export default class extends Controller {
         html += this._productCartd(p)
       })
       this.productListTarget.innerHTML = html
-
     }, 1500)
   }
 
   _query(q) {
     return `
     {
-        product(search: "${q}"){
+        search(search: "${q}"){
             id
             name
             price
@@ -65,7 +64,9 @@ export default class extends Controller {
   }
 
   _productCartd(product) {
+    // TODO: change the link to dynim
     return `
+    <a href="/product/${product.id}">
     <div class="ring-1 ring-gray-200 shadow-lg rounded p-4">
         <div class="relative">
             <img class="w-full block rounded" src="https://upload.wikimedia.org/wikipedia/en/f/f1/Tycho_-_Epoch.jpg"/>
@@ -74,6 +75,6 @@ export default class extends Controller {
                 <p class="text-gray-400 mt-2 text-right">${product.price}</p>
             </div>
         </div>
-    </div>`;
+    </div></a>`;
   }
 }
