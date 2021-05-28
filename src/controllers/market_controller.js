@@ -27,9 +27,9 @@ export default class extends Controller {
 
   async searchItems(keyWords) {
     try {
-      loader.open();
       // set timer to prevent search over
       this.timer = setTimeout(async () => {
+      loader.open();
         const data = await this._fetchPorducts(this._query(keyWords, this.currentPage, this.limit));
         let html = '';
         data.data.search.products.map(p => {
@@ -69,6 +69,7 @@ export default class extends Controller {
             id
             name
             price
+            image
           }
         page,
         per,
@@ -106,7 +107,7 @@ export default class extends Controller {
     <a href="/product/${product.id}">
     <div class="ring-1 ring-gray-200 shadow-lg rounded p-4">
         <div class="relative">
-            <img class="w-full block rounded" src="https://upload.wikimedia.org/wikipedia/en/f/f1/Tycho_-_Epoch.jpg"/>
+            <img class="w-full block rounded" src="${product.image}"/>
             <div class="p-5">
                 <h3 class="text-lg">${product.name}</h3>
                 <p class="text-gray-400 mt-2 text-right">\$${product.price}</p>

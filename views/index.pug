@@ -2,4 +2,5 @@ extends ./layouts/main.pug
 
 block content
     include components/hero.pug
-    include components/recommand_area.pug
+    if recommend
+        include components/recommand_area.pug

@@ -112,7 +112,7 @@ exports.orderDetail = async (req, res) => {
       }
       return prev;
     }, {})
-    domEl.totalPrice = totalPrice;
+    domEl.totalPrice = totalPrice.toFixed(2);
     domEl.products = products
   }
   res.render("pages/orderDetail", domEl);

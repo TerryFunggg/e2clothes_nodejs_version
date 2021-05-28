@@ -2,9 +2,9 @@ extends ../layouts/main.pug
 
 block content
     div(id="product" data-controller="product" data-item=product.id)
-        div(class='grid grid-cols-2 gap-4 mt-4')
+        div(class='grid grid-cols-1 md:grid-cols-2 gap-4 mt-4')
             if product != null
-                div(class="col-span-1 justify-self-center")
+                div(class="relative col-auto md:justify-self-center")
                     img(class="max-w-xs" src=product.image)
                 div(class="col-span-1 shadow-xl p-4 m-2 mr-8 flex flex-col justify-evenly" )
                     h2(class="text-2xl font-blod tracking-wider mb-2") #{product.name}
@@ -18,7 +18,7 @@ block content
                         input(class="w-20 px-2 border-2 rounded" id="buyNum" type="number" value="1" min="0" max=product.quality data-action="product#changeQuality")
             if shop != null
                 hr
-                div(class="col-span-2 mt-4")
+                div(class="col-span-2 mt-4 ring-2 ring-black ring-opacity-50 md:mx-20 rounded shadow")
                     div(class="flex justify-evenly")
                         img(class="h-20 w-20" src=shop.logo)
                         div(class="")

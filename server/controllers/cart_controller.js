@@ -55,6 +55,6 @@ exports.index = async (req, res) => {
     return prev;
   },{})
   domEl.cart = cart;
-  domEl.totalPrice = totalPrice;
+  domEl.totalPrice = totalPrice.toFixed(2);
   res.render("pages/cart", domEl);
 }

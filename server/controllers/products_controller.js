@@ -28,7 +28,9 @@ exports.index = async (req, res) => {
       price
       description
       quality
+      image
       shop {
+        logo
         id
         title
         description
