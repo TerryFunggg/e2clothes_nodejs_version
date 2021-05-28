@@ -32,8 +32,8 @@ exports.index = async (req, res) => {
   if (!!data?.data?.me) {
     domEl.user = data.data.me;
 
-    const role = data.data.me
-    domEl.user_menus.push(role === 'seller' ? 'Your shop' : 'Apply Shop')
+    const role = data.data.me.role
+    domEl.haveShop = role === 'seller'
   }
   const orders = data.data.me.orders
   // Reformat the time string
@@ -83,7 +83,7 @@ exports.orderDetail = async (req, res) => {
           id
           name
           price
-          images
+          image
         }
       }
     }
@@ -91,8 +91,8 @@ exports.orderDetail = async (req, res) => {
 
   if (!!data?.data?.me) {
     domEl.user = data.data.me;
-    const role = data.data.me
-    domEl.user_menus.push(role === 'seller' ? 'Your shop' : 'Apply Shop')
+    const role = data.data.me.role
+    domEl.haveShop = role === 'seller'
     domEl.order = data.data.order
     let products = data.data.order.products;
     let totalPrice = 0;
@@ -106,7 +106,7 @@ exports.orderDetail = async (req, res) => {
           name: product.name,
           quality: 1,
           price: product.price,
-          images: product.images,
+          image: product.image,
         }
         totalPrice += Number(prev[product.name].price)
       }

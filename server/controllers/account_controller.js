@@ -110,8 +110,8 @@ exports.userInfo = async (req, res) => {
   if (!!data?.data?.me) {
     domEl.user = data.data.me;
 
-    const role = data.data.me
-    domEl.user_menus.push( role === 'seller' ? 'Your shop' : 'Apply Shop' )
+    const role = data.data.me.role
+    domEl.haveShop = role === 'seller'
   }
   res.render("pages/userInfo", domEl);
 }
@@ -164,7 +164,7 @@ exports.updateUserInfo = async (req, res) => {
   if (!!data?.data?.updateUserInfo.me) {
     domEl.user = data.data.updateUserInfo.me;
     const role = data.data.updateUserInfo.me.role
-    domEl.user_menus.push( role === 'seller' ? 'Your shop' : 'Apply Shop' )
+    domEl.haveShop = role === 'seller'
     domEl.msg = data.data.updateUserInfo.message;
   }
   res.render("pages/userInfo", domEl);
@@ -217,7 +217,7 @@ exports.updateUserAddress = async (req, res) => {
   if (!!data?.data?.updateUserAddress.me) {
     domEl.user = data.data.updateUserAddress.me;
     const role = data.data.updateUserAddress.me.role
-    domEl.user_menus.push( role === 'seller' ? 'Your shop' : 'Apply Shop' )
+    domEl.haveShop = role === 'seller'
     domEl.msg = data.data.updateUserAddress.message;
   }
   res.render("pages/userInfo", domEl);

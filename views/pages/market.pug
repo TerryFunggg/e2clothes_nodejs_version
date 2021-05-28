@@ -27,7 +27,15 @@ block content
             // product card
             div(class="col-span-6 w-screen md:w-full mx-auto")
                 div(class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-10" data-market-target="productList")
-                // Product card will insert here
+                    if recommend
+                        each p in recommend
+                            a(href="/product/"+p.id)
+                                div(class="ring-1 ring-gray-200 shadow-lg rounded p-4")
+                                    div(class="relative")
+                                        img(class="w-full block rounded" src=p.image)
+                                        div(class="p-5")
+                                            h3(class="text-lg")=p.name
+                                            p(class="text-gray-400 mt-2 text-right")=p.price
 
 
         div(class="flex my-4 justify-center")

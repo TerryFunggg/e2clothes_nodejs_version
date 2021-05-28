@@ -1,3 +1,8 @@
 hr(class="my-10 w-4/5 mx-auto text-black")
-div(class="my-5 w-screen")
+div(class="my-5 w-screen flex flex-col justify-center items-center")
     h2(class="text-center text-lg md:text-3xl") Recommend for you
+    div(class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-6 mt-4")
+        if recommend
+            each product in recommend
+                a(href="/product/"+product.id class="shadow-xl rounded hover:opacity-80")
+                    img(class="" src=product.image)

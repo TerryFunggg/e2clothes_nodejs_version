@@ -5,7 +5,7 @@ block content
         div(class='grid grid-cols-2 gap-4 mt-4')
             if product != null
                 div(class="col-span-1 justify-self-center")
-                    img(class="max-w-xs" src="https://upload.wikimedia.org/wikipedia/en/f/f1/Tycho_-_Epoch.jpg")
+                    img(class="max-w-xs" src=product.image)
                 div(class="col-span-1 shadow-xl p-4 m-2 mr-8 flex flex-col justify-evenly" )
                     h2(class="text-2xl font-blod tracking-wider mb-2") #{product.name}
                     p(class="p-2") #{product.description}
@@ -16,3 +16,11 @@ block content
                     div(class="flex justify-evenly")
                         button(id="buy" class="bg-green-600 py-2 mx-4 text-white rounded hover:bg-green-500 w-full" data-action="product#addToCart") Add to Cart
                         input(class="w-20 px-2 border-2 rounded" id="buyNum" type="number" value="1" min="0" max=product.quality data-action="product#changeQuality")
+            if shop != null
+                hr
+                div(class="col-span-2 mt-4")
+                    div(class="flex justify-evenly")
+                        img(class="h-20 w-20" src=shop.logo)
+                        div(class="")
+                            p(class="")=shop.title
+                            p(class="")=shop.description

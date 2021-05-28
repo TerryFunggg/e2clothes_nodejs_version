@@ -23,7 +23,7 @@ exports.index = async (req, res) => {
           id
           name
           price
-          images
+          image
         }
       }
     }
@@ -32,8 +32,8 @@ exports.index = async (req, res) => {
   if (!!data?.data?.me) {
     domEl.user = data.data.me;
 
-    const role = data.data.me
-    domEl.user_menus.push( role === 'seller' ? 'Your shop' : 'Apply Shop' )
+    const role = data.data.me.role
+    domEl.haveShop = role === 'seller'
   }
   let cart = data.data.me.cart
   // restruct the cart, filter the duplicat
@@ -48,7 +48,7 @@ exports.index = async (req, res) => {
         name: product.name,
         quality:1,
         price: product.price,
-        images: product.images,
+        image: product.image,
       }
       totalPrice += Number(prev[product.name].price)
     }

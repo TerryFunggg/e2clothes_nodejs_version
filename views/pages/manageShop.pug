@@ -1,0 +1,83 @@
+extends ../layouts/main.pug
+
+block content
+    div(class="flex flex-col justify-start p-10" data-controller="shopinfo")
+        div(class="flex")
+            button(data-action="shopinfo#showShop" class="px-6 py-4 shadow rounded-t-lg hover:bg-gray-200") Shop
+            button(data-action="shopinfo#showProducts" class="px-6 py-4 shadow rounded-t-lg hover:bg-gray-200") Products
+        div(class="")
+            // Shop form
+            form(id="form-updateshop" class="form pt-2 pb-6 px-10 md:px-20 shadow-2xl bg-white rounded-lg")
+                div(class="md:grid md:grid-cols-2 gap-2")
+
+                    div(class="my-2")
+                        label(class="" for="logo") Logo:
+                        input(id="logo" name="logo" type="file"  required)
+
+                    div(class="my-2")
+                        img(class="w-40 h-40" id="preview" src=shop.logo)
+
+                    div(class="my-2 col-span-2")
+                        label(class="" for="title") Shop Name:
+                        input(id="title" name="title" value=shop.title type="text" placeholder="Enter your Shop name"  required)
+
+                    div(class="my-2 col-span-2")
+                        label(class="" for="description") Description:
+                        input(id="description" name="description" value=shop.description type="area" placeholder="Enter Description " required)
+
+                    div(class="my-2")
+                        label(class="" for="city") Area:
+                        select(id="city" class="w-8 md:w-40 px-4 py-2" name="city" type="text"  value="nt" required)
+                            option(value="nt") New Territories
+                            option(value="hki") Hong Kong Island
+                            option(value="kl") Kowloon
+                            option(value="ot") Other
+
+
+                    div(class="my-2")
+                        label(class="" for="zipCode") ZipCode:
+                        input(id="zipCode" name="zipCode" type="text" value=shop.address.zipCode  required)
+
+                    div(class="my-2 col-span-2")
+                        label(class="" for="streetAddress") Street Address
+                        input(id="streetAddress" name="streetAddress" type="text" value=shop.address.streetAddress required)
+
+                    div(class="my-2 col-span-2")
+                        label(class="" for="buildAddress") Building Address:
+                        input(id="buildingAddress" name="buildingAddress" type="text" value=shop.address.buildingAddress required)
+
+                div(class="mt-8 col-span-2 text-right")
+                    button(id="shop-submit" data-action="shopinfo#updateshop" class="submit-btn") Submit
+            //address form
+            div(id="product-list" class="form pt-2 pb-6 px-10 md:px-20 shadow-2xl bg-white rounded-lg")
+                div(class="my-4")
+                    a(href="/create_product" class="bg-green-600 px-4 py-2 rounded text-white hover:bg-green-400 hover:bg-green-500 duration-300 ease-out transition")
+                        i(class="fas fa-plus")  Create
+
+                div(class="flex justify-center mt-4" )
+                    table
+                        tr
+                            th(class="mx-4") image
+                            th name
+                            th price
+                            th quality
+                            th
+                            th
+                        if products
+                            each product in products
+                                tr
+                                    //td=product.images[0]
+                                    // TODO: Show product images
+                                    td
+                                        img(class="w-32 h-32" src=product.image)
+                                    td=product.name
+                                    td=product.price
+                                    td=product.quality
+                                        //input(class="w-20 border px-2" type="number" value=product.quality min="0" max=product.quality)
+
+                                    td
+                                        a(class="cursor-pointer" href="/productinfo/"+product.id)
+                                            i(class="text-xl fas fa-wrench text-green-500 hover:text-gray-600" data-item=product.id)
+                                    td
+                                        div(class="cursor-pointer"  data-action="click->shopinfo#deleteProduct")
+                                            i(class="text-xl far fa-times-circle text-red-500 hover:text-gray-600" data-item=product.id)

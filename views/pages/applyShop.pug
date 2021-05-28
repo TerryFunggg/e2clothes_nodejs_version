@@ -1,0 +1,52 @@
+extends ../layouts/main.pug
+
+block content
+    div(class="flex flex-col justify-center p-10" data-controller="applyshop")
+        form(id="form-applyshop" class="form pt-2 pb-6 px-10 md:px-20 shadow-2xl bg-white rounded-lg")
+            div(class="md:grid md:grid-cols-2 gap-2")
+
+                div(class="my-2")
+                    label(class="" for="logo") Logo:
+                    input(id="logo" name="logo" type="file"   required)
+
+                div(class="my-2")
+                    img(class="w-40 h-40" id="preview")
+
+                div(class="my-2 col-span-2")
+                    label(class="" for="title") Shop Name:
+                    input(id="title" name="title" type="text" placeholder="Enter your Shop name"  required)
+
+                div(class="my-2 col-span-2")
+                    label(class="" for="description") Description:
+                    input(id="description" name="description" type="area"  placeholder="Enter Description" required)
+
+                div(class="my-2")
+                    label(class="" for="city") Area:
+                    select(id="city" class="w-8 md:w-40 px-4 py-2" name="city" type="text"  value="nt" required)
+                        option(value="nt") New Territories
+                        option(value="hki") Hong Kong Island
+                        option(value="kl") Kowloon
+                        option(value="ot") Other
+
+
+                div(class="my-2")
+                    label(class="" for="zipCode") ZipCode:
+                    input(id="zipCode" name="zipCode" type="text"  required)
+
+                div(class="my-2 col-span-2")
+                    label(class="" for="streetAddress") Street Address
+                    input(id="streetAddress" name="streetAddress" type="text" required)
+
+                div(class="my-2 col-span-2")
+                    label(class="" for="buildAddress") Building Address:
+                    input(id="buildingAddress" name="buildingAddress" type="text" required)
+
+
+            if msg
+                div(class="msg-box col-span-2")
+                    div(class="flex items-center")
+                        i(class="far fa-check-circle")
+                        p(class="ml-2") #{msg}
+
+            div(class="mt-8 col-span-2 text-right")
+                button(id="submit" data-action="applyshop#submit" class="submit-btn") Submit

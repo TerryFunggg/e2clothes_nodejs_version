@@ -19,14 +19,19 @@ exports.index = async (req, res) => {
         avatar
         numOfCart
       }
+      recommend{
+        id
+        image
+      }
     }
   `, token);
 
   if (!!data?.data?.me) {
     domEl.user = data.data.me;
 
-    const role = data.data.me
-    domEl.user_menus.push( role === 'seller' ? 'Your shop' : 'Apply Shop' )
+    const role = data.data.me.role
+    domEl.haveShop = role === 'seller'
+    domEl.recommend = data.data.recommend
   }
 
 

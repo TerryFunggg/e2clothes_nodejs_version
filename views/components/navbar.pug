@@ -25,9 +25,12 @@ nav(class="shadow" data-controller="navbar")
                         a(href="/user_info") Your Profile
                     li(class="nav-user-dropdown-item")
                         a(href="/orders") Your Order
-                    each item in user_menus
+                    if haveShop
                         li(class="nav-user-dropdown-item")
-                            a #{item}
+                            a(href="/manage_shop") Your shop
+                    else
+                        li(class="nav-user-dropdown-item")
+                            a(href="/apply_shop") Apply Shop
                     hr
                     li(class="nav-user-dropdown-item" data-action="click->navbar#signout") Sign Out
         else
@@ -45,9 +48,11 @@ nav(class="shadow" data-controller="navbar")
             a(class="nav-menu-item" href="/cart") Your Cart
             a(class="nav-menu-item" href="/orders") Your Order
             a(class="nav-menu-item" href="/user_info") Your Profile
-            each item in user_menus
-                a(class="nav-menu-item") #{item}
-                hr
+            if haveShop
+                a(class="nav-menu-item" href="/manage_shop") Your shop
+            else
+                a(class="nav-menu-item" href="/apply_shop") Apply Shop
+            hr
             a(class="nav-menu-item" data-action="click->navbar#signout") Sign Out
 
         else
