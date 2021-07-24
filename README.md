@@ -1,3 +1,5 @@
+Note: This project is highly incompatible. Now for code sample only.
+
 e2clothes_web 
 
 ### Moduls used:
